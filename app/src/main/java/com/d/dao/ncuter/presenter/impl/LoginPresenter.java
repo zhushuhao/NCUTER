@@ -46,14 +46,12 @@ public class LoginPresenter implements ILoginPresenter {
                         mCompositeSubscription.remove(this);
                     }
                 }
-
                 @Override
                 public void onError(Throwable e) {
                     Log.e("error", e.toString());
                     mActivity.onLoginFailure();
                     mActivity.hideProgress();
                 }
-
                 @Override
                 public void onNext(String s) {
                     //　加入判断是否登陆成功
@@ -78,7 +76,6 @@ public class LoginPresenter implements ILoginPresenter {
                                 mCompositeSubscription.remove(this);
                             }
                         }
-
                         @Override
                         public void onError(Throwable e) {
                             Log.e("error", e.toString());
@@ -89,55 +86,19 @@ public class LoginPresenter implements ILoginPresenter {
                         @Override
                         public void onNext(String s) {
                             mActivity.hideProgress();
-                            if (("yes").equals(s)) {
-                                //success
-                                queryInfo();
-                            } else {
-                                //failure
+                            if (("yes").equals(s)) {//第一次登陆成功
+                                mActivity.onTeachLoginSuccess();
+                            }else if("mid".equals(s)){//已经登陆了一个用户
+                                mActivity.onTeachLoginSuccess();
                             }
-
-
+                            else {//失败
+                                Log.e("teach","login teach failure");
+                                onError(new Throwable("用户名与密码不匹配"));
+                            }
                         }
                     }));
         }
     }
-
-    private void queryInfo() {
-        this.mCompositeSubscription.add(this.mDataManager.teach_query_person_info()
-                .subscribe(new Subscriber<String>() {
-                    @Override
-                    public void onCompleted() {
-                        if (mCompositeSubscription != null) {
-                            mCompositeSubscription.remove(this);
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e("error", e.toString());
-                    }
-
-                    @Override
-                    public void onNext(String s) {
-                        Log.e("s.length",""+s.length());
-                        Log.e("s", s);
-                        String sa = "";
-                        try {
-                            sa=new String(s.getBytes("UTF-8"),"gb2312");
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
-                        }
-
-                        Pattern p = Pattern.compile("bgcolor=(.*)</td>");
-                        Matcher m = p.matcher(sa);
-                        while (m.find()) {
-                            String str = m.group(0);
-                            Log.e("str",str);
-                        }
-                    }
-                }));
-    }
-
     @Override
     public void attachView(BaseView view) {
         this.mActivity = (LoginActivity) view;

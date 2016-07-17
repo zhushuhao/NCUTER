@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/rl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TextView
+            android:layout_width="108px"
+            android:layout_height="80px"
+            android:layout_marginLeft="6px"
+            android:gravity="center"
+            android:text="星期一"
+            android:textColor="#05f15f"
+            android:textSize="30px" />
+
+        <TextView
+            android:layout_width="108px"
+            android:layout_height="80px"
+            android:layout_marginLeft="114px"
+            android:gravity="center"
+            android:text="星期二"
+            android:textColor="#05f15f"
+            android:textSize="30px" />
+
+        <TextView
+            android:layout_width="108px"
+            android:layout_height="80px"
+            android:layout_marginLeft="222px"
+            android:gravity="center"
+            android:text="星期三"
+            android:textColor="#05f15f"
+            android:textSize="30px" />
+
+        <TextView
+            android:layout_width="108px"
+            android:layout_height="80px"
+            android:layout_marginLeft="330px"
+            android:gravity="center"
+            android:text="星期四"
+            android:textColor="#05f15f"
+            android:textSize="30px" />
+
+        <TextView
+            android:layout_width="108px"
+            android:layout_height="80px"
+            android:layout_marginLeft="438px"
+            android:gravity="center"
+            android:text="星期五"
+            android:textColor="#05f15f"
+            android:textSize="30px" />
+
+        <TextView
+            android:layout_width="108px"
+            android:layout_height="80px"
+            android:layout_marginLeft="546px"
+            android:gravity="center"
+            android:text="星期六"
+            android:textColor="#05f15f"
+            android:textSize="30px" />
+
+        <TextView
+            android:layout_width="108px"
+            android:layout_height="80px"
+            android:layout_marginLeft="654px"
+            android:gravity="center"
+            android:text="星期日"
+            android:textColor="#05f15f"
+            android:textSize="30px" />
+
+        <android.support.v7.widget.RecyclerView
+            android:paddingLeft="4px"
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="80px">
+        </android.support.v7.widget.RecyclerView>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <include
+        layout="@layout/error_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</com.zhy.autolayout.AutoFrameLayout>

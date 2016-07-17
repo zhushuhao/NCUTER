@@ -2,14 +2,17 @@ package com.d.dao.ncuter.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.d.dao.ncuter.bean.User;
+import com.d.dao.ncuter.ui.manager.NavigationManager;
 import com.d.dao.ncuter.utils.ACache;
 import com.zhy.autolayout.AutoLayoutActivity;
-
-import java.io.FileNotFoundException;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by dao on 5/29/16.
@@ -23,6 +26,7 @@ public abstract class BaseAppCompatActivity extends AutoLayoutActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = BaseAppCompatActivity.this;
+
         initOutData();
         setContentView(this.getLayoutId());
         this.initToolbar(savedInstanceState);
@@ -31,6 +35,18 @@ public abstract class BaseAppCompatActivity extends AutoLayoutActivity {
         this.initListeners();
     }
 
+    //  转到登陆
+    protected void gotoLogin(int type) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("flag", type);//flag值
+        NavigationManager.getInstance().gotoActivity(mContext, LoginActivity.class, bundle);
+    }
+
+    //登陆成功,设置登陆模式
+    protected void setLoginMode(int flag, User user) {
+        setLogin(true, flag);//登陆状态为true,登陆模式为多模式教学网
+        saveUserAndPass(user);
+    }
 
     //设置登陆状态
     protected void setLogin(boolean b, int type) {
@@ -38,33 +54,50 @@ public abstract class BaseAppCompatActivity extends AutoLayoutActivity {
             ACache.get(mContext).put("logined", "yes");
             if (type == 0) {//登陆的是多模式教学网,
                 ACache.get(mContext).put("logintype", "0");
-            } else if (type == 1) {//登陆的是教学信息网
+            } else {//登陆的是教学信息网
                 ACache.get(mContext).put("logintype", "1");
             }
         } else {//登陆状态为false
             ACache.get(mContext).put("logined", "no");
         }
     }
+
     //是否登陆
-    protected boolean isLogined(){
+    protected boolean isLogined() {
         String str = ACache.get(mContext).getAsString("logined");
-        if(str.equals("yes")){
+        if (str != null && str.equals("yes")) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
+    //登陆类型,0:多模式还是1:教学信息网
+    protected int getLoginType() {
+        String type = ACache.get(mContext).getAsString("logintype");
+        if (type != null) {
+            if (type.equals("1")) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else {
+            return -1;
+        }
+    }
+
     /**
      * 储存用户信息
      *
      * @param user
      */
     protected void saveUserAndPass(User user) {
-        ACache.get(mContext).put("user", user);
+        int type = user.getType();
+        ACache.get(mContext).put(String.valueOf(type), user);
     }
 
-    protected User getUserInfo() {
-        User user = (User) ACache.get(mContext).getAsObject("user");
+    protected User getUserInfo(int type) {
+        User user = (User) ACache.get(mContext).getAsObject(String.valueOf(type));
         return user;
     }
 

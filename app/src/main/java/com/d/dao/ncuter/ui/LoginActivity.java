@@ -63,7 +63,6 @@ public class LoginActivity extends BaseAppCompatActivity implements View.OnClick
                 flag = bundle.getInt("flag", 0);
             }
         }
-
     }
 
     @Override
@@ -80,8 +79,6 @@ public class LoginActivity extends BaseAppCompatActivity implements View.OnClick
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-
-
         //初始化view
         ll_root = (LinearLayout) findViewById(R.id.ll_root);
         btn_login = (Button) findViewById(R.id.btn_login);
@@ -89,7 +86,7 @@ public class LoginActivity extends BaseAppCompatActivity implements View.OnClick
         et_pass = (EditText) findViewById(R.id.et_password);
         tv_change = (TextView) findViewById(R.id.tv_change);
 
-        setMode(flag);
+        setBackgroundMode(flag);
 
         tv_change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,17 +94,16 @@ public class LoginActivity extends BaseAppCompatActivity implements View.OnClick
                 Log.e("clicked", "clicked");
                 if (flag == 0) {
                     flag = 1;
-                    setMode(1);
+                    setBackgroundMode(1);
                 } else {
                     flag = 0;
-                    setMode(0);
+                    setBackgroundMode(0);
                 }
             }
         });
-
     }
 
-    private void setMode(int mode) {
+    private void setBackgroundMode(int mode) {
         if (mode == 0) {
             //改变背景颜色
             ll_root.setBackgroundColor(Color.parseColor("#0ee4c0"));
@@ -139,7 +135,7 @@ public class LoginActivity extends BaseAppCompatActivity implements View.OnClick
                 mUser = et_user.getText().toString().trim();
                 mPass = et_pass.getText().toString().trim();
                 if (validate(mUser, mPass)) {//如果用户名密码合法
-                    Log.e("flag",""+flag);
+                    Log.e("flag", "" + flag);
                     mPresenter.login(mUser, mPass, flag);
                 } else {
                     ToastUtils.showToast(mContext, "用户名或者密码不合法,检查后重试");
@@ -177,19 +173,25 @@ public class LoginActivity extends BaseAppCompatActivity implements View.OnClick
 
     //多模式教学网登陆成功
     public void onMultiLoginSuccess(List<Course> list) {
-        super.setLogin(true, 0);//登陆状态为true,登陆模式为多模式教学网
-        //储存用户名密码
-        User user = new User(mUser, mPass, 0);
-        super.saveUserAndPass(user);
+        User user = getCurrentUser();
+        super.setLoginMode(flag, user);
         Bundle bundle = new Bundle();
         bundle.putSerializable("course", (Serializable) list);
         NavigationManager.getInstance().gotoActivity(mContext, MultiMainActivity.class, bundle);
         LoginActivity.this.finish();
     }
 
-    //教学信息网登陆
-    public void onTeachLoginSuccess() {
+    private User getCurrentUser() {
+        User user = new User(mUser, mPass, flag);
+        return user;
+    }
 
+    //教学信息网登陆成功
+    public void onTeachLoginSuccess() {
+        User user = getCurrentUser();
+        super.setLoginMode(flag, user);//登陆状态为true,登陆模式为教学信息网
+        NavigationManager.getInstance().gotoActivity(mContext, TeachMainActivity.class);
+        LoginActivity.this.finish();
     }
 
     @Override

@@ -41,7 +41,6 @@ public class CourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_course, parent, false);
-        AutoUtils.autoSize(view);
         return new NewsHolder(view);
     }
 
@@ -72,6 +71,7 @@ public class CourseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         public NewsHolder(View itemView) {
             super(itemView);
+            AutoUtils.autoSize(itemView);
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
             tv_source = (TextView) itemView.findViewById(R.id.tv_source);
             tv_time = (TextView) itemView.findViewById(R.id.tv_time);

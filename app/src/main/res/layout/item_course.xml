@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/NewsCard"
+<com.d.dao.ncuter.ui.autolayout.AutoCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -36,4 +35,4 @@
                 android:text="2016-05-30 11:43:37" />
         </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoLinearLayout>
-</android.support.v7.widget.CardView>
+</com.d.dao.ncuter.ui.autolayout.AutoCardView>

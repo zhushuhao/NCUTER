@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="106px"
+    android:layout_height="160px"
+    android:layout_marginRight="2px"
+    android:background="@drawable/bg_timetable">
+
+    <TextView
+        android:id="@+id/tv_course"
+        android:layout_width="108px"
+        android:layout_height="200px"
+        android:gravity="center"
+        android:text="绩点"
+        android:textColor="#fff"
+        android:textSize="28px" />
+</com.zhy.autolayout.AutoRelativeLayout>

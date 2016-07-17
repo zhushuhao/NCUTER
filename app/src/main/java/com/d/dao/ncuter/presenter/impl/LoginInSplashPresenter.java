@@ -63,8 +63,39 @@ public class LoginInSplashPresenter implements ILoginPresenter {
                     }
                 }
             }));
-        } else {//教学信息网登陆
+        }else {//教学信息网登陆
+            this.mCompositeSubscription.add(this.mDataManager.teach_login(user, pass).
+                    subscribe(new Subscriber<String>() {
+                        @Override
+                        public void onCompleted() {
+                            if (mCompositeSubscription != null) {
+                                mCompositeSubscription.remove(this);
+                            }
+                        }
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.e("error", e.toString());
+                            mActivity.hideProgress();
+                            mActivity.onTeachLoginFailure();
+                        }
 
+                        @Override
+                        public void onNext(String s) {
+//                            mActivity.hideProgress();
+                            if (("yes").equals(s)) {//第一次登陆成功
+                                //success
+//                                queryInfo();
+                                mActivity.onTeachLoginSuccess();
+                            }else if("mid".equals(s)){//已经登陆了一个用户
+//                                queryInfo();
+                                mActivity.onTeachLoginSuccess();
+                            }else {//失败
+                                //failure
+                                Log.e("teach","login teach failure");
+                                onError(new Throwable("用户名与密码不匹配"));
+                            }
+                        }
+                    }));
         }
     }
 

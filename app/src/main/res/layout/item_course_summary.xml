@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.d.dao.ncuter.ui.autolayout.AutoCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/NewsCard"
     app:cardCornerRadius="10px"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -24,4 +23,4 @@
 
 
     </com.zhy.autolayout.AutoRelativeLayout>
-</android.support.v7.widget.CardView>
+</com.d.dao.ncuter.ui.autolayout.AutoCardView>

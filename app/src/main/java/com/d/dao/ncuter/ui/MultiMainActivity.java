@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.anupcowkur.reservoir.ReservoirGetCallback;
 import com.camnter.easyrecyclerview.widget.decorator.EasyBorderDividerItemDecoration;
 import com.d.dao.ncuter.R;
+import com.d.dao.ncuter.api.cookie.PersistentCookieStore;
 import com.d.dao.ncuter.bean.Course;
 import com.d.dao.ncuter.bean.User;
 import com.d.dao.ncuter.ui.adapter.CourseAdapter;
@@ -56,11 +57,11 @@ public class MultiMainActivity extends BaseToolbarActivity implements BaseView {
         mContext = MultiMainActivity.this;
 
         Intent intent = getIntent();
-        if(intent!=null){
+        if (intent != null) {
             Bundle bundle = intent.getExtras();
             if (bundle != null) {//不为空
                 mList = (List<Course>) bundle.getSerializable("course");
-                Log.e("initOutData----mList",mList.toString());
+                Log.e("initOutData----mList", mList.toString());
             }
         }
 
@@ -133,14 +134,14 @@ public class MultiMainActivity extends BaseToolbarActivity implements BaseView {
 
         if (course != null) {
             String address = course.getCourse_address();//获取请求地址
-            String course_code=  course.getCourse_code();
-            bundle.putString("course_address",address);
-            bundle.putString("course_code",course_code);
-        }else{
-            bundle.putString("course_address","");
-            bundle.putString("course_code","");
+            String course_code = course.getCourse_code();
+            bundle.putString("course_address", address);
+            bundle.putString("course_code", course_code);
+        } else {
+            bundle.putString("course_address", "");
+            bundle.putString("course_code", "");
         }
-        NavigationManager.getInstance().gotoActivity(mContext,MultiCourseSummaryActivity.class,bundle);
+        NavigationManager.getInstance().gotoActivity(mContext, MultiCourseSummaryActivity.class, bundle);
 
 
     }
@@ -159,6 +160,7 @@ public class MultiMainActivity extends BaseToolbarActivity implements BaseView {
             ll_error_root.setVisibility(View.GONE);
         }
     }
+
     @Override
     protected void initListeners() {
 
@@ -175,12 +177,13 @@ public class MultiMainActivity extends BaseToolbarActivity implements BaseView {
                 Log.e("list", mList.toString());
                 if (mList.size() > 0) {
                     ll_error_root.setVisibility(View.GONE);
-                    Log.e("更新数据","本地更新数据");
+                    Log.e("更新数据", "本地更新数据");
                     mAdapter.setList(mList);
                     mAdapter.notifyDataSetChanged();
 
                 }
             }
+
             @Override
             public void onFailure(Exception e) {
                 if (mSwipe.isRefreshing()) {
@@ -201,32 +204,23 @@ public class MultiMainActivity extends BaseToolbarActivity implements BaseView {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_change_login) {// 切换登陆
-            if(super.isLogined()){
-                User user = super.getUserInfo();
-                if(user!=null){
-                    int type = user.getType();
-                    if(type==0){
-                        gotoLoginActivity(1);
-                    }else{
-                        gotoLoginActivity(0);
-                    }
-                }else{
-                    gotoLoginActivity(0);
-                }
-            }else{
+            if (super.isLogined()) {
+                gotoLoginActivity(1);
+            } else {
                 gotoLoginActivity(0);
             }
-        }else if(id==R.id.action_download){//查看下载
+        } else if (id == R.id.action_download) {//查看下载
 
         }
 
         return true;
     }
+
     //转到 LoginActivity
-    private void gotoLoginActivity(int type){
+    private void gotoLoginActivity(int type) {
         Bundle bundle = new Bundle();
-        bundle.putInt("flag",type);
-        NavigationManager.getInstance().gotoActivity(mContext,LoginActivity.class,bundle);
+        bundle.putInt("flag", type);
+        NavigationManager.getInstance().gotoActivity(mContext, LoginActivity.class, bundle);
 
     }
 
@@ -238,5 +232,13 @@ public class MultiMainActivity extends BaseToolbarActivity implements BaseView {
     @Override
     public void hideProgress() {
         super.hiddenProgressDialog();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PersistentCookieStore store = new PersistentCookieStore(mContext);
+        store.removeAll();
     }
 }

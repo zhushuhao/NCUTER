@@ -87,10 +87,42 @@ public interface ApiService {
                                    @Field("passwd") String passwd,
                                    @Field("Submit.x") int x,
                                    @Field("Submit.y") int y
-                                   );
-    @GET("/xs/grxx.asp")
-    Observable<String> teach_query_person_info(@Query("id") String id);
+    );
 
-    @GET("/xs/cjkb.asp")
-    Observable<String> teach_query_person_score(@Query("id") String id);
+    @GET("/xs/grxx.asp")
+    Observable<String> teach_query_person_info2(@Query("id") String id);
+
+    //个人信息查询
+    @FormUrlEncoded
+    @POST("/xs/grxx.asp")
+    Observable<String> teach_query_person_info(@Query("id") String id,
+                                               @Field("r") String r
+    );
+
+    //查询成绩
+//    /xs/cjkb.asp?id=5
+    @FormUrlEncoded
+    @POST("/xs/cjkb.asp")
+    Observable<String> teach_query_person_score(@Query("id") String id,
+                                                @Field("r") String r);
+
+    //成绩绩点 /xs/cjkb.asp?id=6
+    @FormUrlEncoded
+    @POST("/xs/cjkb.asp")
+    Observable<String> teach_query_person_gpa(@Query("id") String id,
+                                                @Field("r") String r);
+
+    //    个人课表 /xs/cjkb.asp?id=1
+    @FormUrlEncoded
+    @POST("/xs/cjkb.asp")
+    Observable<String> teach_query_person_timetable(@Query("id") String id,
+                                              @Field("r") String r);
+
+    //    考试安排 /xs/cjkb.asp?id=3
+
+    @FormUrlEncoded
+    @POST("/xs/cjkb.asp")
+    Observable<String> teach_query_person_exam_schedule(@Query("id") String id,
+                                              @Field("r") String r);
+
 }

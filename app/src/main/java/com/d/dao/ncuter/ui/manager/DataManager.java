@@ -9,6 +9,8 @@ import com.d.dao.ncuter.model.MultiCourseWareModel;
 import com.d.dao.ncuter.ui.MultiCourseSummaryActivity;
 import com.d.dao.ncuter.utils.RxUtils;
 
+import java.io.Serializable;
+
 import rx.Observable;
 import rx.functions.Func1;
 
@@ -64,10 +66,14 @@ public class DataManager {
                         }
                         Log.e("s",""+s.length());
                         Log.e("s",s);
-                        if (s.contains("累加成绩查询") || s.contains("cjkb.asp")) {
+                        if (s.contains("累加成绩查询") || s.contains("cjkb.asp") || s.contains("/xs/yzcsq.asp?id=1")) {
                             Log.e("contain", "yes");
                             return "yes";
-                        }else{
+                        }else if(s.contains("<font size=\"2\">")){
+                            Log.e("已经登陆了一个用户","已经登陆了一个用户");
+                            return "mid";
+                        }
+                        else{
                             Log.e("contain", "no");
                             return "no";
                         }
@@ -87,7 +93,45 @@ public class DataManager {
                 .compose(RxUtils.<String>applyIOToMainThreadSchedulers());
     }
 
-    //获取课程简介信息
+    //教学信息网考试成绩查询
+    public Observable<String> teach_query_score(){
+        return this.mLoginModel.teach_query_person_score().map(new Func1<String, String>() {
+            @Override
+            public String call(String s) {
+                return s;
+            }
+        }).compose(RxUtils.<String>applyIOToMainThreadSchedulers());
+    }
+    //教学信息网考试成绩查询
+    public Observable<String> teach_query_gpa(){
+        return this.mLoginModel.teach_query_gpa().map(new Func1<String, String>() {
+            @Override
+            public String call(String s) {
+                return s;
+            }
+        }).compose(RxUtils.<String>applyIOToMainThreadSchedulers());
+    }
+    //查询课表
+    public Observable<String> teach_query_timetable(){
+        return this.mLoginModel.teach_query_timetable().map(new Func1<String, String>() {
+            @Override
+            public String call(String s) {
+                return s;
+            }
+        }).compose(RxUtils.<String>applyIOToMainThreadSchedulers());
+    }
+    //查询考试安排
+    public Observable<String> teach_query_exam_schedule(){
+        return this.mLoginModel.teach_query_exam_schedule().map(new Func1<String, String>() {
+            @Override
+            public String call(String s) {
+                Log.e("datamanager","hello"+s);
+                return s;
+            }
+        }).compose(RxUtils.<String>applyIOToMainThreadSchedulers());
+    }
+
+    //获取多模式课程简介信息
     public Observable<String> multi_getCourseSummaryMsg(String address) {
         return this.mMultiCourseSummaryModel.getCourseSummaryMsg(address)
                 .map(new Func1<String, String>() {

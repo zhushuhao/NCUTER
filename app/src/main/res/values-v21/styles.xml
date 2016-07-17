@@ -2,24 +2,21 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#ea650c</item>
+        <item name="colorPrimaryDark">#ea650c</item>
+        <item name="colorAccent">#f0f</item>
 
+        <item name="android:fitsSystemWindows">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
         <item name="toolbarStyle">@style/ClubToolbar</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
     <!--toolbar左边有空隙-->
     <style name="ClubToolbar" parent="Widget.AppCompat.Toolbar">
         <item name="contentInsetStart">0dp</item><!-- 设置该属性解决空白部分-->
     </style>
-
-    <style name="NewsCard" parent="CardView">
-        <item name="contentPadding">0dp</item>
-        <item name="cardCornerRadius">2dp</item>
-        <item name="cardPreventCornerOverlap">false</item>
-        <item name="cardElevation">3dp</item>
+    <style name="splashAppTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 </resources>

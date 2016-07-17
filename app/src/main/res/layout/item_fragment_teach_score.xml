@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.d.dao.ncuter.ui.autolayout.AutoCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="#10bae1"
+    app:cardCornerRadius="20px"
+    app:cardMaxElevation="6px"
+    app:cardElevation="6px"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16px">
+
+        <TextView
+            android:textColor="#fff"
+            android:id="@+id/tv_course_name"
+            android:layout_width="wrap_content"
+            android:layout_height="60px"
+            android:text="单片机原理及应用"
+            android:gravity="center"
+            android:textSize="32px" />
+        <TextView
+            android:textColor="#fff"
+
+            android:id="@+id/tv_teacher_name"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="60px"
+            android:gravity="center"
+            android:text="武梦龙"
+            android:textSize="28px" />
+        <TextView
+            android:textColor="#fff"
+            android:layout_marginLeft="0px"
+            android:layout_marginTop="70px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="平时"
+            android:textSize="28px" />
+        <TextView
+            android:textColor="#fff"
+
+            android:id="@+id/tv_score_normal"
+            android:layout_marginLeft="100px"
+            android:layout_marginTop="70px"
+            android:layout_width="80px"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="85"
+            android:textSize="28px" />
+
+        <TextView
+            android:textColor="#fff"
+
+            android:layout_marginLeft="200px"
+            android:layout_marginTop="70px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="期末"
+            android:textSize="28px" />
+        <TextView
+            android:textColor="#fff"
+
+            android:id="@+id/tv_score_final"
+            android:layout_marginLeft="280px"
+            android:layout_marginTop="70px"
+            android:layout_width="80px"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="91"
+            android:textSize="28px" />
+        <TextView
+            android:textColor="#fff"
+
+            android:layout_marginLeft="0px"
+            android:layout_marginTop="120px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="平时%"
+            android:textSize="28px" />
+        <TextView
+            android:textColor="#fff"
+
+            android:id="@+id/tv_percent_normal"
+            android:layout_marginLeft="100px"
+            android:layout_marginTop="120px"
+            android:layout_width="80px"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="40"
+            android:textSize="28px" />
+        <TextView
+            android:textColor="#fff"
+
+            android:layout_marginLeft="200px"
+            android:layout_marginTop="120px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总评"
+            android:textSize="28px" />
+        <TextView
+            android:textColor="#fff"
+
+            android:id="@+id/tv_score_overall"
+            android:layout_marginLeft="280px"
+            android:layout_marginTop="120px"
+            android:layout_width="80px"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="89"
+            android:textSize="28px" />
+
+        <TextView
+            android:textColor="#fff"
+
+            android:id="@+id/tv_exam_nature"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="200px"
+            android:layout_marginTop="70px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="补考"
+            android:textSize="28px" />
+        <TextView
+            android:textColor="#fff"
+
+            android:id="@+id/tv_credit"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="300px"
+            android:layout_marginTop="120px"
+            android:layout_width="100px"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="2 学分"
+            android:textSize="28px" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.d.dao.ncuter.ui.autolayout.AutoCardView>

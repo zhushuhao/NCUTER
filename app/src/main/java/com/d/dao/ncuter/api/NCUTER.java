@@ -3,6 +3,7 @@ package com.d.dao.ncuter.api;
 import android.util.Log;
 
 import com.d.dao.ncuter.api.cookie.CookiesManager;
+import com.d.dao.ncuter.utils.StringUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 //import com.squareup.okhttp.Interceptor;
@@ -11,7 +12,12 @@ import com.google.gson.GsonBuilder;
 //import com.squareup.okhttp.Response;
 //import com.squareup.okhttp.ResponseBody;
 
+import org.xml.sax.InputSource;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -25,8 +31,10 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import okio.BufferedSource;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -57,8 +65,7 @@ public class NCUTER {
                         Request original = chain.request();
 
                         Request request = original.newBuilder()
-//                                .header("mon_icampus", "yes")
-//                                .header("cookie","ASPSESSIONIDCSQCRTQS=LICLMEBCFKDHKMJEHALCDCJO")
+                                .header("mon_icampus", "yes")
                                 .method(original.method(), original.body())
                                 .build();
                         Response response = chain.proceed(request);
@@ -102,9 +109,13 @@ public class NCUTER {
 
         public static final StringConverter INSTANCE = new StringConverter();
 
+
+
         @Override
         public String convert(ResponseBody value) throws IOException {
-            return value.string();
+            InputStream in = value.byteStream();
+            String result = StringUtils.inputStream2String(in,"gbk");
+            return result;
         }
     }
 
@@ -128,4 +139,6 @@ public class NCUTER {
             return null;
         }
     }
+
+
 }

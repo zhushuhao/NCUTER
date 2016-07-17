@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/rl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_course_type"
+                android:gravity="center"
+                android:textSize="30px"
+                android:layout_width="128px"
+                android:layout_height="100px"
+                android:layout_marginLeft="6px"
+                android:text="课程大类" />
+            <TextView
+                android:textSize="30px"
+                android:id="@+id/tv_course_name"
+                android:gravity="center"
+                android:layout_width="260px"
+                android:layout_height="100px"
+                android:layout_marginLeft="148px"
+                android:text="课程名称" />
+            <TextView
+                android:id="@+id/tv_credit"
+                android:gravity="center"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:layout_marginLeft="408px"
+                android:textSize="30px"
+                android:text="学分" />
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:gravity="center"
+                android:textSize="30px"
+                android:layout_width="120px"
+                android:layout_height="100px"
+                android:layout_marginLeft="508px"
+                android:text="成绩" />
+            <TextView
+                android:id="@+id/tv_gpa"
+                android:gravity="center"
+                android:textSize="30px"
+                android:layout_width="140px"
+                android:layout_height="100px"
+                android:layout_marginLeft="628px"
+                android:text="绩点" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <include
+        layout="@layout/error_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</com.zhy.autolayout.AutoFrameLayout>

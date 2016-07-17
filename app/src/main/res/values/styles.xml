@@ -3,31 +3,52 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#ea650c</item>
+        <item name="colorPrimaryDark">#ea650c</item>
+        <item name="colorAccent">#f0f</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
-
         <item name="toolbarStyle">@style/ClubToolbar</item>
     </style>
     <!--toolbar左边有空隙-->
     <style name="ClubToolbar" parent="Widget.AppCompat.Toolbar">
         <item name="contentInsetStart">0dp</item><!-- 设置该属性解决空白部分-->
     </style>
-
-
-    <style name="NewsCard" parent="CardView">
-        <item name="contentPadding">0dp</item>
-        <item name="cardCornerRadius">2dp</item>
-        <item name="cardPreventCornerOverlap">false</item>
-        <item name="cardElevation">3dp</item>
+    <style name="splashAppTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
     </style>
+
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#f00</item>
+        <item name="tabIndicatorHeight">4px</item>
+        <item name="tabPaddingStart">24px</item>
+        <item name="tabPaddingEnd">24px</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+        <item name="tabSelectedTextColor">#fff</item>
+    </style>
+    <!--parent="TextAppearance.Design.Tab"-->
+    <style name="MyCustomTabTextAppearance" >
+        <item name="android:textSize">28px</item>
+        <item name="android:textColor">#fff</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">28px</item>
+    </style>
+
+    <style name="MyCustomTabTextAppearance2" parent="TextAppearance.Design.Tab"> <!--TAB文字样式-->
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#ff0</item>
+        <item name="textAllCaps">false</item> <!--英文大写,默认true-->
+    </style>
 </resources>

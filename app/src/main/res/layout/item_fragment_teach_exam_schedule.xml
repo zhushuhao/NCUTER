@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.d.dao.ncuter.ui.autolayout.AutoCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="#10bae1"
+    app:cardCornerRadius="20px"
+    app:cardMaxElevation="6px"
+    app:cardElevation="6px"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16px">
+
+        <TextView
+            android:id="@+id/tv_exam_name"
+            android:layout_width="wrap_content"
+            android:layout_height="60px"
+            android:text="信息论与编码"
+            android:gravity="center"
+            android:textSize="32px" />
+        <TextView
+            android:layout_marginLeft="0px"
+            android:layout_marginTop="70px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地点"
+            android:textSize="28px" />
+        <TextView
+            android:id="@+id/tv_exam_site"
+            android:layout_marginLeft="80px"
+            android:layout_marginTop="70px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="翰学0110"
+            android:textSize="28px" />
+
+
+        <TextView
+            android:layout_marginLeft="0px"
+            android:layout_marginTop="120px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日期"
+            android:textSize="28px" />
+        <TextView
+            android:id="@+id/tv_exam_date"
+            android:layout_marginLeft="80px"
+            android:layout_marginTop="120px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2016-6-22(周二)"
+            android:textSize="28px" />
+        <TextView
+            android:layout_marginLeft="0px"
+            android:layout_marginTop="170px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="时间"
+            android:textSize="28px" />
+        <TextView
+            android:id="@+id/tv_exam_time"
+            android:layout_marginLeft="80px"
+            android:layout_marginTop="170px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="8时30分--10时30分"
+            android:textSize="28px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.d.dao.ncuter.ui.autolayout.AutoCardView>

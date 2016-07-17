@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100px"
+    >
+
+    <TextView
+        android:id="@+id/tv_course_type"
+        android:layout_width="128px"
+        android:layout_height="100px"
+        android:layout_marginLeft="6px"
+        android:gravity="center"
+        android:text="课程大类"
+        android:textSize="28px" />
+
+    <TextView
+        android:id="@+id/tv_course_name"
+        android:layout_width="260px"
+        android:layout_height="100px"
+        android:layout_marginLeft="148px"
+        android:gravity="center"
+        android:paddingLeft="5px"
+        android:paddingRight="5px"
+        android:singleLine="true"
+        android:text="毛泽东思想与中国特色社会主义理论体系概论"
+        android:textSize="28px" />
+    <TextView
+        android:id="@+id/tv_credit"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_marginLeft="408px"
+        android:gravity="center"
+        android:text="128"
+        android:textSize="28px" />
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="120px"
+        android:layout_height="100px"
+        android:layout_marginLeft="508px"
+        android:gravity="center"
+        android:text="成绩"
+        android:textSize="28px" />
+
+    <TextView
+        android:id="@+id/tv_gpa"
+        android:layout_width="140px"
+        android:layout_height="100px"
+        android:layout_marginLeft="628px"
+        android:gravity="center"
+        android:text="绩点"
+        android:textSize="28px" />
+</com.zhy.autolayout.AutoRelativeLayout>
